@@ -8,9 +8,30 @@ const names = [
     'Mary', 
     'Paul', 
     'Joe', 
-    'Roberto'
+    // 'Roberto'
 ];
 
-function randomCouple(array) {
-    
+function randomCouple(arrayList) {
+
+    const length = arrayList.length;
+
+    const couples=[];
+
+    const newArray=[];
+
+    while(!arrayList.isEmpty()){
+        let j=0;
+
+        for(let i=0; i<length/2; i++) {
+            newArray.push(arrayList[Math.floor(Math.random()*length)]);
+            arrayList.pop(newArray[i]);
+            newArray.push(arrayList[Math.floor(Math.random()*length)]);
+        }
+        couples.push(newArray.slice(j, j+1));
+        j+=2;
+    }
+
+    return couples;
 }
+
+console.log(randomCouple(names));
