@@ -17,21 +17,23 @@ function randomCouple(arrayList) {
 
     const couples=[];
 
-    const newArray=[];
+    const Array1=[];
 
     while(arrayList.length !== 0){
         let j=0;
-        let k=j+2;
 
         for(let i=0; i<length/2; i++) {
-            newArray.push(arrayList[Math.floor(Math.random()*length)]);
-            arrayList.pop(newArray[i]);
-            newArray.push(arrayList[Math.floor(Math.random()*length)]);
+            Array1.push(arrayList[Math.floor(Math.random()*length)]);
+            arrayList.pop(Array1[i]);
+            Array1.push(arrayList[Math.floor(Math.random()*length)]);
+            arrayList.pop(Array1[i+1]);
+            
         }
-        couples.push(newArray.slice(j, j+1));
-        couples.push(newArray.slice(k, k+1));
+        couples.push(Array1[j], Array1[j+1]);
+        j+=2;
         
     }
+    console.log(couples);
 
     return couples;
 }
