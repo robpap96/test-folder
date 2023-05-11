@@ -37,7 +37,12 @@ function randomCouple(arrayList) {
         }
         while(length===1){
             oddCouplesName = arrayList[Math.floor(Math.random()*length)];
-            if(!couples[couples.length-1].includes(oddCouplesName) && !couples[couples.length-2].includes(oddCouplesName)){
+            let n = couples.length;
+            for(let i=n; i<n; i--){
+                if(!couples[i].includes(oddCouplesName){
+                    continue;
+                }
+
                 couples.push(oddCouplesName);
                 length=0;
             }
