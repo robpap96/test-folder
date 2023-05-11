@@ -18,27 +18,33 @@ function randomCouple(arrayList) {
         const couples = [];
         let oddCouplesName = '';
 
-        while(arrayList.length !== 0 && arrayList.length !== 1 ){
+        while(length !== 0 && length !== 1 ){
             let firstCouplesName = arrayList[Math.floor(Math.random()*length)];
             let secondCouplesName = arrayList[Math.floor(Math.random()*length)];
 
-            if(!couples.includes(firstCouplesName) && !couples.includes(secondCouplesName) && firstCouplesName !== secondCouplesName){
-                
-                couples.push([firstCouplesName, secondCouplesName]);
-                
-                arrayList.pop(firstCouplesName);
-                arrayList.pop(secondCouplesName);
-                
-                length = length - 2;
-            }else continue;
+            if(!couples.includes(firstCouplesName) &&
+            !couples.includes(secondCouplesName) &&
+            firstCouplesName !== secondCouplesName){
+                if(couples.length === 0){
+                    couples.push([firstCouplesName, secondCouplesName]);
+                    length = length - 2;
+                }else {
+                    if(!couples[couples.length-1].includes(firstCouplesName) && !couples[couples.length-1].includes(firstCouplesName))
+                    couples.push([firstCouplesName, secondCouplesName]);      
+                    length = length - 2;
+                }
+            }
         }
-        if (arrayList.length === 1) {
-            oddCouplesName = arrayList[0];
-            couples.push(oddCouplesName);
+        while(length===1){
+            oddCouplesName = arrayList[Math.floor(Math.random()*length)];
+            if(!couples[couples.length-1].includes(oddCouplesName) && !couples[couples.length-2].includes(oddCouplesName)){
+                couples.push(oddCouplesName);
+                length=0;
+            }
         }
-
+        
         return couples;
-}
+    }
 
 
 console.log(randomCouple(Names));
