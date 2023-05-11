@@ -19,23 +19,24 @@ function randomCouple(arrayList) {
         let oddCouplesName = '';
 
         while(arrayList.length !== 0 && arrayList.length !== 1 ){
-            if(!couples.includes(arrayList[Math.floor(Math.random()*length)]) && !couples.includes(arrayList[Math.floor(Math.random()*length)])){
-                let firstCouplesName = arrayList[Math.floor(Math.random()*length)];
-                arrayList.pop(firstCouplesName);
-    
-                let secondCouplesName = arrayList[Math.floor(Math.random()*length)];
-                arrayList.pop(secondCouplesName);
+            let firstCouplesName = arrayList[Math.floor(Math.random()*length)];
+            let secondCouplesName = arrayList[Math.floor(Math.random()*length)];
+
+            if(!couples.includes(firstCouplesName) && !couples.includes(secondCouplesName) && firstCouplesName !== secondCouplesName){
                 
                 couples.push([firstCouplesName, secondCouplesName]);
-            }
-
-
-            length = length - 2;
+                
+                arrayList.pop(firstCouplesName);
+                arrayList.pop(secondCouplesName);
+                
+                length = length - 2;
+            }else continue;
         }
         if (arrayList.length === 1) {
             oddCouplesName = arrayList[0];
             couples.push(oddCouplesName);
-        } 
+        }
+
         return couples;
 }
 
